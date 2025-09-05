@@ -2,6 +2,11 @@
 FROM gradle:8.5-jdk17 AS builder
 WORKDIR /app
 COPY . .
+
+# gradlew에 실행 권한 부여
+RUN chmod +x ./gradlew
+
+# 빌드 실행
 RUN ./gradlew clean build -x test
 
 # 2단계: 실행용 이미지

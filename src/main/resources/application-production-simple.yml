@@ -1,0 +1,20 @@
+# 배포용 간소화 설정
+spring:
+  profiles:
+    active: production-simple
+    
+  # PostgreSQL만 사용 (Elasticsearch, Redis 비활성화)
+  datasource:
+    url: ${DATABASE_URL}
+    
+  jpa:
+    hibernate:
+      ddl-auto: create-drop # 간단한 스키마
+      
+# 복잡한 기능 비활성화
+features:
+  elasticsearch: false
+  redis-cache: false
+  oauth2: false # 간단한 로그인만
+  email: false
+  location-service: false
